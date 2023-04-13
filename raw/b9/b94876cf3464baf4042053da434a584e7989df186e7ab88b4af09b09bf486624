@@ -1,0 +1,86 @@
+
+
+一、为什么选择使用Spark？
+	1、大数据的处理引擎：（1）Hadoop MapReduce：分布式的计算思想
+	                     （2）Spark: 问题：没有对内存进行很好的管理，容易出现：OOM的问题
+						 （3）Flink
+						 
+	2、MapReduce存在什么问题？
+		（*）核心：Shuffle：洗牌: Map、Reduce、排序、分区、合并Combiner
+		（*）问题：产生大量的I/O（性能的瓶颈）
+			
+	3、Spark特点：基于内存运算
+
+二、Spark的体系结构和运行机制
+	1、大数据的核心的问题：数据的计算（分布式的计算--->集群）、数据的存储
+	2、Spark的体系结构：集群，多台机器
+	3、Hadoop和Spark一样：全分布的环境：至少需要3台机器
+	4、也支持伪分布模式（只需要：一台机器就可以了）
+
+三、Spark实战：搭建Spark环境（伪分布的环境）
+	1、准备工作：安装Linux、JDK（1.8,64位）、主机名
+	              192.168.157.11 bigdata11
+				  
+	2、安装包：/root/tools
+	   安装目录：/root/training
+	   spark版本：spark-2.1.0-bin-hadoop2.7.tgz
+	              
+	3、解压：tar -zxvf spark-2.1.0-bin-hadoop2.7.tgz -C /root/training/
+	
+	4、设置Spark的环境变量（只能设置一个）：注意：由于Hadoop和Spark的脚本有冲突
+	5、配置文件： conf/spark-env.sh
+			 cp spark-env.sh.template spark-env.sh
+			 
+	6、参数:
+	     spark-env.sh
+				export JAVA_HOME=/root/training/jdk1.8.0_144
+				export SPARK_MASTER_HOST=bigdata11
+				export SPARK_MASTER_PORT=7077
+				
+		slaves: 文件（从节点的位置）
+		        bigdata11
+				
+	7、启动：sbin/start-all.sh ----> 是不是输入了一次密码！！！！
+	                                 如果集群有1000台机器，我们需要输入多少次密码？
+		
+		注意：不管是Hadoop，还是Spark，一定配置免密码登录（不对称加密）
+
+四、Spark Shell和Spark Submit
+	1、Spark Shell：命令行工具
+		bin/spark-shell --master spark://bigdata11:7077
+		sc.textFile("/root/data.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).collect
+		结果：res0: Array[(String, Int)] = Array((is,1), (love,2), (capital,1), (Beijing,2), (China,2), (I,2), (of,1), (the,1))
+	
+	
+	2、Spark Submit：提交任务
+		spark-submit --master spark://bigdata11:7077 --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.11-2.1.0.jar 100
+		
+		Pi is roughly 3.1425155142515515
+	
+		300次：
+		Pi is roughly 3.141371838045728
+
+五、Scala语言：函数式编程
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
