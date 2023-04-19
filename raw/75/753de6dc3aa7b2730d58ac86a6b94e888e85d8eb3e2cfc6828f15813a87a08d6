@@ -1,0 +1,151 @@
+@font-face{font-family:coresym;src:url("data:font/ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBSoAAAC8AAAAYGNtYXAXVtKHAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZnI7YPQAAAF4AAAAzGhlYWQUfMYMAAACRAAAADZoaGVhB5gDxgAAAnwAAAAkaG10eAoAACoAAAKgAAAAFGxvY2EAKAB6AAACtAAAAAxtYXhwAAgAMQAAAsAAAAAgbmFtZZlKCfsAAALgAAABhnBvc3QAAwAAAAAEaAAAACAAAwMAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAAPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6QD//f//AAAAAAAg6QD//f//AAH/4xcEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAACACoAqwPWAqsACwAuAAABMjY1NCYjIgYVFBYlIRUjFSM1IwYHDgEHBiMiJy4BJyY1NDc+ATc2MzIXHgEXFgEqIjQzIyIyMQEVAbpWqroNFxg/JyYqNS8vRRQUFBRFLy81KiYnPxgXAVUzIyI0NCIjM6ysqqomHx8tDQwUFEUvLjY1Ly5GFBQNDC0gHwAAAAABAAAAAAAAjcoCWV8PPPUACwQAAAAAANjEwTIAAAAA2MTBMgAAAAAD1gKrAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAAAPWAAEAAAAAAAAAAAAAAAAAAAAFBAAAAAAAAAAAAAAAAgAAAAQAACoAAAAAAAoAFAAeAGYAAQAAAAUALwACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAcAAAABAAAAAAACAAcAYAABAAAAAAADAAcANgABAAAAAAAEAAcAdQABAAAAAAAFAAsAFQABAAAAAAAGAAcASwABAAAAAAAKABoAigADAAEECQABAA4ABwADAAEECQACAA4AZwADAAEECQADAA4APQADAAEECQAEAA4AfAADAAEECQAFABYAIAADAAEECQAGAA4AUgADAAEECQAKADQApGljb21vb24AaQBjAG8AbQBvAG8AblZlcnNpb24gMS4wAFYAZQByAHMAaQBvAG4AIAAxAC4AMGljb21vb24AaQBjAG8AbQBvAG8Abmljb21vb24AaQBjAG8AbQBvAG8AblJlZ3VsYXIAUgBlAGcAdQBsAGEAcmljb21vb24AaQBjAG8AbQBvAG8AbkZvbnQgZ2VuZXJhdGVkIGJ5IEljb01vb24uAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")}
+
+body{	font-family:Microsoft Yahei,Helvetica,-apple-system, BlinkMacSystemFont, Cambria,Tahoma, Verdana, "Lucida Sans Unicode", "Arial Unicode MS", Roboto, Lucida Grande, Lucida Sans, Droid Sans Mono, Droid Sans, sans-serif, Arial Unicode MS; 
+font-size:1em;}
+WFR,WLI{display:block;margin:0.1em 0;}
+WFR{font-size:90%;margin-top:0.2em;}
+COCA-BLK{
+	display: inline-block;
+	COLOR: #EA151C;
+	margin-right:0.5em;
+}
+COCA-H::before{
+	content:'COCA';
+	font-size:85%;
+	border: 0.1em solid;
+	border-radius:5px;
+	padding: 0 2px;
+	position:relative;
+	top:-0.05em;
+	}
+COCA-R{
+	margin:0 0.2em;
+	}
+BNC-BLK{
+	display: inline-block;
+	COLOR: #21A2DE;
+	margin-right:0.5em;
+}
+BNC-H::before{
+	content:'BNC';
+	font-size:85%;
+	border: 0.1em solid;
+	border-radius:5px;
+	padding: 0 2px;
+	position:relative;
+	top:-0.05em;
+	}
+BNC-R{
+	margin:0 0.2em;
+	}
+iWeb-BLK{
+	display: inline-block;
+	COLOR: #59B300;
+	margin-right:0.5em;
+}
+iWeb-H::before{
+	content:'iWeb';
+	font-size:85%;
+	border: 0.1em solid;
+	border-radius:5px;
+	padding: 0 2px;
+	position:relative;
+	top:-0.05em;
+	}
+iWeb-R{
+	margin:0 0.2em;
+	}
+ECO-BLK{
+	display: inline-block;
+	COLOR: #888;
+	margin-right:0.5em;
+}
+ECO-H::before{
+	content:'Economist';
+	font-size:85%;
+	border: 0.1em solid;
+	border-radius:5px;
+	padding: 0 2px;
+	position:relative;
+	top:-0.05em;
+	}
+ECO-R{
+	margin:0 0.2em;
+	}
+/*COCA-BLK::after,BNC-BLK::after,iWeb-BLK::after*/
+
+@media only screen and (max-width:750px) {
+	COCA-BLK,BNC-BLK,iWeb-BLK,ECO-BLK{margin-right:0.35em;}
+	/*COCA-H::before,BNC-H::before,iWeb-H::before,ECO-H::before{font-size:85%;}*/
+	ECO-H::before{content:'Eco';}
+}
+@media only screen and (max-width:300px) {
+	COCA-BLK,BNC-BLK,iWeb-BLK,ECO-BLK{margin-right:0.1em;}
+	COCA-H::before,BNC-H::before,iWeb-H::before,ECO-H::before{font-size:80%;}
+	COCA-H::before{content:'C';}
+	BNC-H::before{content:'B';}
+	iWeb-H::before{content:'i';}
+	ECO-H::before{content:'E';}
+}
+
+
+WLI{color:#555;font-size:85%;postion:relative;}
+L_OX::before{
+	font-family:coresym;
+	display: inline;
+	*display: none    !important; /* IE 7 IE 6 */
+    _display: none    !important; /* IE 6 */
+    display: none\0/  !important; /* IE 8-9 */
+    content:"\e900";
+}
+L_OX::after{
+	display: none;
+	*display: inline    !important; /* IE 7 IE 6 */
+    _display: inline    !important; /* IE 6 */
+    display: inline\0/  !important; /* IE 8-9 */
+	content:"\1f5dd";
+}
+
+L_GK::before{content:'高';}
+L_CET4::before{content:'4';}
+L_CET6::before{content:'6';}
+L_YJS::before{content:'研';}
+L_TEM4::before{content:'四';}
+L_TEM8::before{content:'八';}
+L_TOFEL::before{content:'托';}
+L_IELTS::before{content:'雅';}
+L_GRE3000::before{content:'G';}
+L_GRE3000::after{content:'3000';font-size:60%;}
+L_GREred::before{content:'G';}
+L_GREred::after{content:'宝';font-size:60%;}
+L_GRE::before{content:'G';}
+L_colins5::before{content:'★★★★★';}
+L_colins4::before{content:'★★★★☆';}
+L_colins3::before{content:'★★★☆☆';}
+L_colins2::before{content:'★★☆☆☆';}
+L_colins1::before{content:'★☆☆☆☆';}
+L_colins0::before{content:'☆☆☆☆☆';}
+
+
+L_OX{margin:0 0.38em;color: #ff6835;font-size:115%;position:relative;top:0.13em;}
+L_CET4,L_CET6{margin:0 0.2em;font-size:102.5%;}
+L_GK,L_YJS{margin:0 0.2em;}
+L_TEM4,L_TEM8{margin:0 0.2em;color:#35A;}
+L_TOFEL,L_IELTS::before{margin:0 0.2em;}
+L_GRE3000,L_GREred,L_GRE{margin:0 0.2em;color:#A55;font-size:102.5%;}
+L_colins5,L_colins4,L_colins3,L_colins2,L_colins1,L_colins0::before{font-style:bold;font-size:125%;margin:0 0.3em;color: orange;text-shadow:0px 0px 0.8px #888,0 0 5px white;position:relative;top:0.03em;}
+L_GK,L_YJS,L_TEM4,L_TEM8,L_TOFEL,L_IELTS{position:relative;top:-0.03em;}
+
+hword{display:inline;margin-right:0.2em;color:#333;margin-right:0.2em;}
+hword~WFR,hword~WLI{display:inline;}
+
+sound_blk a{position:relative;}
+.us_sound,.uk_sound{height:1.1em;max-height:1.1em;margin-bottom:0em;position:relative;bottom:0.03em;}
+.cam_sound{height:0.70em;max-height:0.7em;margin-bottom:0em;position:relative;bottom:0.1em;}
+
+
+
+
+
+
+
