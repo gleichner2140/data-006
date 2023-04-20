@@ -1,0 +1,333 @@
+var $j = jQuery.noConflict();
+$j(document).ready(function(){
+var selectlayout = $j('.sliderlayout select').val();
+switch(selectlayout)
+{
+case 'landscape':
+$j(".choosesliderlandscape").show();
+$j(".choosesliderpotrait").hide();
+break;
+case 'portrait':
+$j(".choosesliderlandscape").hide();
+$j(".choosesliderpotrait").show();
+break;
+
+}
+$j('.sliderlayout select').change(function(){ 
+										   
+										   
+var selectlayout = $j('.sliderlayout select').val();
+switch(selectlayout)
+{
+case 'landscape':
+$j(".choosesliderlandscape").show();
+$j(".choosesliderpotrait").hide();
+
+break;
+case 'portrait':
+$j(".choosesliderlandscape").hide();
+$j(".choosesliderpotrait").show();
+break;
+
+}
+});
+if(selectlayout =="landscape") {
+var choosesliderlandscape1 = $j('.choosesliderlandscape select').val();	
+switch(choosesliderlandscape1)
+{
+case 'video':
+$j(".videourl").show();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'imageslider':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'contentslider':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'singleimage':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").show();
+$j(".kaya_single_img_linkurl").show();
+break
+}
+}
+
+if(selectlayout =="portrait") {
+var choosesliderpotrait1 = $j('.choosesliderpotrait select').val();					
+switch(choosesliderpotrait1)
+{
+case 'video':
+$j(".videourl").show();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'imageslider':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'contentslider':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'singleimage':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").show();
+$j(".kaya_single_img_linkurl").show();
+break
+}
+}
+
+$j('.choosesliderlandscape select').change(function(){ 
+var choosesliderlandscape = $j('.choosesliderlandscape select').val();
+switch(choosesliderlandscape)
+{
+case 'video':
+$j(".videourl").show();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'imageslider':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'contentslider':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'singleimage':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").show();
+$j(".kaya_single_img_linkurl").show();
+break;
+}
+});
+
+
+// choose slider portait
+$j('.choosesliderpotrait select').change(function(){ 
+var choosesliderpotrait = $j('.choosesliderpotrait select').val();
+switch(choosesliderpotrait)
+{
+case 'video':
+$j(".videourl").show();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'imageslider':
+$j(".videourl").hide();
+$j(".slidertitle").show();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'contentslider':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").show();
+$j(".kaya_single_img").hide();
+$j(".kaya_single_img_linkurl").hide();
+break;
+case'singleimage':
+$j(".videourl").hide();
+$j(".slidertitle").hide();
+$j(".numbernivo_slides").hide();
+$j(".kaya_single_img").show();
+$j(".kaya_single_img_linkurl").show();
+break;
+}
+});
+
+var type1 = $j('#slider_link select').val();
+switch(type1){
+		case 'default':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'pages':
+			$j("#slider_pages").show();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'posts':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").show();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'categories':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").show();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'customlink':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").show();
+			$j("#slider_video").hide();
+		break;
+		case 'portfolio':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").show();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'video':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").show();
+		break;
+		}
+$j('#slider_link select').change(function(){ 
+var type = $j('#slider_link select').val();
+switch(type){
+		case 'default':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'pages':
+			$j("#slider_pages").show();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'posts':
+			$j("#slider_pages").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").show();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'categories':
+			$j("#slider_pages").hide();
+			$j("#slider_categories").show();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").hide();
+		break;
+		case 'customlink':
+			$j("#slider_pages").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").show();
+			$j("#slider_video").hide();
+		break;
+		case 'video':
+			$j("#slider_pages").hide();
+			$j("#slider_portfolio").hide();
+			$j("#slider_categories").hide();
+			$j("#slider_posts").hide();
+			$j("#slider_customlink").hide();
+			$j("#slider_video").show();
+		break;
+		}
+
+});
+var top_left_section = $j('.choose_frontpage_top_left_section select').val();						
+switch(top_left_section)
+{
+case 'forntpage_portfoliopost':
+$j(".frontpage_top_left_section_categorypost").hide();
+$j(".frontpage_top_left_section_portfoliopost").show();
+break;
+case 'frontpage_categorypost':
+$j(".frontpage_top_left_section_categorypost").show();
+$j(".frontpage_top_left_section_portfoliopost").hide();
+break;
+}
+$j('.choose_frontpage_top_left_section select').change(function(){ 
+var choose_frontpage_top_left_section = $j('.choose_frontpage_top_left_section select').val();
+switch(choose_frontpage_top_left_section)
+{
+case 'forntpage_portfoliopost':
+$j(".frontpage_top_left_section_categorypost").hide();
+$j(".frontpage_top_left_section_portfoliopost").show();
+
+break;
+case 'frontpage_categorypost':
+$j(".frontpage_top_left_section_categorypost").show();
+$j(".frontpage_top_left_section_portfoliopost").hide();
+
+break;
+
+}
+});
+});
+jQuery(document).ready(function() { 
+jQuery(".sortable_order input").change(function(){
+			myCheckId = jQuery(this).val(); 
+			myCheckRel = jQuery(this).attr('rel'); 
+			myCheckTitle = jQuery(this).attr('alt'); 
+			
+			if (jQuery(this).is(':checked')) { 
+				jQuery('#'+myCheckRel).append('<li id="'+myCheckId+'" class="ui-state-default">'+myCheckTitle+'</li>');
+			} 
+			else
+			{
+				jQuery('#'+myCheckId+'').remove();
+			}
+
+			var order = jQuery('#'+myCheckRel).sortable('toArray');
+
+            jQuery('#'+myCheckRel+'_data').val(order);
+		});
+		});
