@@ -1,0 +1,51 @@
+</div>
+<!-- End Mid Column Wrapper -->
+<div class="clear"></div>
+<div id="bottom_section_wrapper">
+    <div class="container clearfix" id="bottom_section">
+        <div class="one_third" id="footer_frist_column">
+            <?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('bottom_column_one') ) : ?>
+          <h3> <?php _e( ' Bottom Column 1', 'prominent' ); ?> </h3>          
+            <p> <?php _e( 'Wesce sit amet porttitor leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque interdum, nulla sit amet varius dignissim Vestibulum pretium risus. <a href="#"> View More &raquo;</a>', 'prominent' ); ?></p>
+            
+            <?php endif; ?>
+        </div>
+        <div class="one_third" id="footer_second_column">
+            <?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('bottom_column_two') ) : ?>
+            <h3> <?php _e( ' Bottom Column 2', 'prominent' ); ?> </h3>          
+            <p> <?php _e( 'Wesce sit amet porttitor leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque interdum, nulla sit amet varius dignissim Vestibulum pretium risus. <a href="#"> View More &raquo;</a>', 'prominent' ); ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="one_third_last" id="footer_third_column">
+            <?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('bottom_column_three') ) : ?>
+           <h3> <?php _e( ' Bottom Column 3', 'prominent' ); ?> </h3>          
+            <p> <?php _e( 'Wesce sit amet porttitor leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque interdum, nulla sit amet varius dignissim Vestibulum pretium risus. <a href="#"> View More &raquo;</a>', 'prominent' ); ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="container" id="footer">
+    
+        <div class="one_half" id="footer-column1">        
+        	<?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('footer_column_one') ) : ?>
+          		<p><?php _e( ' Copyright &copy;  2011  www.yourdomain.com, all rights reserved.', 'prominent' ); ?></p>
+            <?php endif; ?>            
+        </div>
+        
+        <div  class="one_half_last" id="footer-column2">
+     <?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('footer_column_two') ) : ?>
+          		<p><?php _e( 'Designed and Developed by kayapati.', 'prominent' ); ?></p>
+            <?php endif; ?>    
+        </div>
+    </div>
+</div>
+<?php wp_footer(); ?>
+
+      <?php  $kaya_google_analytics=get_option('kaya_google_analytics');
+        if ($kaya_google_analytics) { 	
+        echo stripslashes($kaya_google_analytics); 					
+        } else { ?>  
+		<?php } ?>
+</div>
+</body>
+</html>
