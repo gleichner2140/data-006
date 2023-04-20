@@ -1,0 +1,13 @@
+/* Hyper links
+------------------------------------------------------*/
+#mid-column-wrapper a:link, #mid-column-wrapper a:visited{
+color:#03039b;text-decoration:none;}
+#mid-column-wrapper a:hover{text-decoration: inherit;color:#666;
+}
+
+/*styles for Read more button shortcode
+----------------------------------------------------------------------------------------------------*/
+.readmore{background-position: right -1152px;} 
+.readmore:hover { background-position: right -1188px; }
+.readmore span { background-position: left -1152px; }
+.readmore:hover span {background-position: left -1188px;}
