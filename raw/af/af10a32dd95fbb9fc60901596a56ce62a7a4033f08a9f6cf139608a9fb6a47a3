@@ -1,0 +1,76 @@
+<?php
+
+/*-----------------------------------------------------------------------------------*/
+/* Head Hook
+/*-----------------------------------------------------------------------------------*/
+
+function kaya_head() { do_action( 'kaya_head' ); }
+
+/*-----------------------------------------------------------------------------------*/
+/* Get the style path currently selected */
+/*-----------------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Add default options after activation */
+/*-----------------------------------------------------------------------------------*/
+if (is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
+	//Call action that sets
+	add_action('admin_head','kaya_option_setup');
+}
+
+function kaya_option_setup(){
+
+	//Update EMPTY options
+	$kaya_array = array();
+	add_option('kaya_options',$kaya_array);
+
+	$template = get_option('kaya_template');
+	$saved_options = get_option('kaya_options');
+	
+	foreach($template as $option) {
+		if($option['type'] != 'heading'){
+			$id = $option['id'];
+			$std = $option['std'];
+			$db_option = get_option($id);
+			if(empty($db_option)){
+				if(is_array($option['type'])) {
+					foreach($option['type'] as $child){
+						$c_id = $child['id'];
+						$c_std = $child['std'];
+						update_option($c_id,$c_std);
+						$kaya_array[$c_id] = $c_std; 
+					}
+				} else {
+					update_option($id,$std);
+					$kaya_array[$id] = $std;
+				}
+			}
+			else { //So just store the old values over again.
+				$kaya_array[$id] = $db_option;
+			}
+		}
+	}
+	update_option('kaya_options',$kaya_array);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Admin Backend */
+/*-----------------------------------------------------------------------------------*/
+function optionsframework_admin_head() { 
+	
+	//Tweaked the message on theme activate
+	?>
+    <script type="text/javascript">
+    jQuery(function(){
+	var message = '<p>本主题通过<a href="<?php echo admin_url('admin.php?page=optionsframework'); ?>">选项面板</a>进行相关设置. 另外，本主题还支持小工具，请访问<a href="<?php echo admin_url('widgets.php'); ?>">小工具设置页面</a>进行设置.本主题由echo2050汉化，汉化作者网站：<a href="http://www.dianjin123.com">点金wordpress主题网</a></p>';
+    	jQuery('.themes-php #message2').html(message);
+    
+    });
+    </script>
+    <?php
+}
+
+add_action('admin_head', 'optionsframework_admin_head'); 
+
+?>
