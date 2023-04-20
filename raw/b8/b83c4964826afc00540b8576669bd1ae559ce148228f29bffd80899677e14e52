@@ -1,0 +1,202 @@
+.navigation-wrapper{
+	width:860px;
+	position:relative;
+	z-index:999;
+	margin:0 auto;
+	top:-12px;
+	
+}
+.top-navigation{
+	position: absolute;
+	z-index:13;
+	top:0px;
+	right:0px;
+	background-image: url(../images/top-menu-bg.png);
+	background-repeat: no-repeat;
+	height: 49px;
+	background-position:left top;
+	width:auto;
+	float:right;
+	padding-left:60px;
+	line-height:inherit;	
+}
+
+
+.menu-right{
+	background-image: url(../images/top-menu-bg.png);
+	background-repeat: no-repeat;
+	background-position:right top;
+	float:right;
+	position: absolute;
+	z-index:222;
+	right:-60px;
+	height:49px;
+	width:60px;	
+}
+
+.jqueryslidemenu{
+	margin:0 auto;
+	position:relative;
+	float:right;
+	top:0px;
+	z-index:1111;
+	margin:0 auto;
+
+}
+.jqueryslidemenu ul{
+	line-height:34px;
+	margin:0px;
+
+
+}
+
+#myslidemenu{
+	float:left;
+	line-height:34px;
+	height:49px;
+}
+#myslidemenu li.main-links a{
+	 font-size:13px!important;
+}
+#myslidemenu li.main-links ul li a{
+	 font-size:12px!important;
+}
+
+.jqueryslidemenu a {
+	text-decoration:none;
+	font-weight:normal;
+	padding:0px 15px 0px 15px;	
+	background-image: url(../images/divider.png)!important;
+	background-repeat: no-repeat;
+	background-position: right;
+	color:#333!important; 
+}
+
+
+.jqueryslidemenu li.main-links ul li a, .jqueryslidemenu li.main-links:hover > a{
+color:#101010!important;
+}
+
+.jqueryslidemenu li.main-links ul li a:hover, .jqueryslidemenu li.main-links:hover > a:hover{
+color:#666!important;
+}
+
+.jqueryslidemenu li.main-links:hover > a{
+ background-color:#f9f9f9;
+
+}
+.jqueryslidemenu .lastlink a{
+background-image:none!important;
+
+}
+
+.jqueryslidemenu ul li ul li a {
+background-image:none!important;
+}
+
+
+.jqueryslidemenu ul ul {
+	line-height:22px;
+	margin:0px;
+	padding:0px;
+	background-color:#f9f9f9;
+ 	-webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+	
+-moz-box-shadow: 5px 5px rgba(0,0,0,0.5);
+-webkit-box-shadow: 5px 5px rgba(0,0,0,0.5);
+box-shadow: 5px 5px rgba(0,0,0,0.5);
+}
+
+.jqueryslidemenu ul ul ul {
+	line-height:22px;
+	margin:0px;
+	padding:0px;
+	background-color:#f9f9f9;
+	-webkit-border-radius:  10px;
+    -moz-border-radius:  10px;
+    border-radius: 10px;
+	
+
+
+}
+
+.jqueryslidemenu ul li a {
+	float:left;
+	outline:none;
+	padding:7px 15px;}
+
+.jqueryslidemenu ul li ul li a {
+text-transform: none;
+font-weight:normal;
+}
+.jqueryslidemenu ul ul ul {
+padding-top:0px;
+
+}	
+.jqueryslidemenu ul li ul li{
+	border-bottom:1px solid #eee;
+	}
+
+/*Top level list items*/
+
+.jqueryslidemenu ul li{
+	position: relative;
+	display: inline;
+	float: left;
+	background-image:none;
+	margin:0px;
+	padding:0px;}
+
+.jqueryslidemenu ul li ul a{
+
+}
+.jqueryslidemenu ul li ul {
+	background-position: left top;
+	z-index:333;
+}
+
+.jqueryslidemenu ul li ul li ul {
+	background-position: left bottom;
+	z-index:333;}
+.jqueryslidemenu ul li ul li {
+	padding-top:1px;
+	width:175px;
+	display:block;
+	}
+	
+/*1st sub level menu*/
+.jqueryslidemenu ul li ul{
+	position: absolute;
+	left: 0;
+	display: block;
+	visibility: hidden;
+	z-index:111;
+	
+}
+
+/*current menu */
+.jqueryslidemenu  ul li.current_page_item a{
+	color:#fff;	
+
+}
+.jqueryslidemenu  ul li.current_page_item ul li a, .jqueryslidemenu  ul li.current-menu-ancestor ul li a {
+background-color:transparent!important;
+}
+
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+.downarrowclass{
+	position: absolute;
+	top: 19px;
+	right: 7px;
+	visibility:hidden;
+}
+.rightarrowclass{
+	position: absolute;
+	top: 13px;
+	right: 10px;
+
+
+}
