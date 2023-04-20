@@ -1,0 +1,126 @@
+<?php
+
+// custom sidebar widgets create funtions
+if ( function_exists('register_sidebar') )
+	{	
+		 $dynamic_widgets =get_option('customsidebar');
+		// print_r($sidebar_widgets);
+		  if(is_array($sidebar_widgets)){
+		  if($dynamic_widgets) {
+		foreach ($dynamic_widgets as $page_name)
+		{	 
+			if($page_name != "") {
+			register_sidebar(array(
+			'name' =>$page_name,
+			'id'            => 'sidebar-'.strtolower(preg_replace('/\s+/', '-', $page_name)),
+			'description' => esc_html__('小工具栏, 在 "'.$page_name.'" 中用作侧边栏区', 'prominent'),		
+			'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="sidebar_inner_line">',
+			'after_widget' => '</div></div>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>',
+			));
+		} }
+	}
+	}
+}
+
+// Pages Sidebar
+if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'Pages Sidebar',
+		'id'            => 'Pages Sidebar',
+		'description' => esc_html__('页面侧边栏', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="sidebar_inner_line">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+));
+// Portffolio Sidebar
+if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'Portfolio Sidebar',
+		'id'            => 'Portfolio Sidebar',
+		'description' => esc_html__('作品集页面侧边栏', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="sidebar_inner_line">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+));
+
+// Blog Sidebar
+if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'Blog Sidebar',
+		'id'            => 'Blog Sidebar',
+		'description' => esc_html__('博客页面侧边栏', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="sidebar_inner_line">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+));
+// Contact Sidebar
+if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'Contact Sidebar',
+		'id'            => 'Contact Sidebar',
+		'description' => esc_html__('联系页面侧边栏', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="sidebar_inner_line">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+));
+
+if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'头部右上角区域',
+		'id'            => 'top_header_right',
+		'description' => esc_html__('一般添加联系信息或搜索框', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+));
+
+		
+	if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'页面底部1',
+		'id'            => 'bottom_column_one',
+		'description' => esc_html__('在页脚上边左下区域小工具区.', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div> ',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+	));
+
+
+	if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'页面底部2',
+		'id'            => 'bottom_column_two',
+		'description' => esc_html__('在页脚上边中间区域小工具区.', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+		));
+
+
+	if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'页面底部3',
+		'id'            => 'bottom_column_three',
+		'description' => esc_html__('在页脚上边右下区域小工具区.', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+		));
+	
+	if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'页脚左边',
+		'id'            => 'footer_column_one',
+		'description' => esc_html__('页脚左边部分，通常使用文本小工具添加版权信息.', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		));
+	
+	if ( function_exists('register_sidebar') )
+		register_sidebar(array('name'=>'页脚右边',
+		'id'            => 'footer_column_two',
+		'description' => esc_html__('页脚右边部分，通常使用文本小工具添加网站其它信息.', 'prominent'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		));
+
+?>
