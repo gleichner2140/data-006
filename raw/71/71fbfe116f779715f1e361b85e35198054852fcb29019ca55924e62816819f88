@@ -1,0 +1,20 @@
+主题简介：
+ 这个主题融合chinaz元素，和幸福收藏夹的sandfish 风格。
+ 
+1、需要修改网站介绍，在文件 header.php 里面
+ 2、修改图片 替换掉我images目录的 123.gif 和 address.gif 文件，换成你自己的就ok。
+ 3、安装的时候请卸载原来的插件，否则会引起错乱
+ 
+建议使用的插件：
+ 
+文章分页：Pagebar2
+ 
+相关日志：Watermark RELOADED
+ 
+嵌套恢复：Wordpress Thread Comment
+ 
+文章摘要：wp-utf8-excerpt
+ 
+文件缓存：WP Super Cache
+ 
+所有插件只需在后台的 “插件” – “添加新插件” – “搜索” 里面搜索名称就可以在线安装了。
