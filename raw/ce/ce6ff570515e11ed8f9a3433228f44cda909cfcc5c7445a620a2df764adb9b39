@@ -1,0 +1,412 @@
+<?php
+
+$prefix = '';
+
+$meta_box = array(
+
+	'id' => 'my-meta-box',
+
+	'title' => '幻灯片页面标题选项',
+
+	'page' => 'slider',
+
+	'context' => 'normal',
+
+	'priority' => 'high',
+
+	'fields' => array(
+
+	
+
+		array(
+
+			'name' => '选择链接',
+
+			'desc' => '说明：pages(页面), posts(文章),customlink(自定义链接),categories(栏目),default(默认)',
+
+			'options' => array( "pages" =>"pages", "posts" =>"posts","customlink" =>"customlink" ,'categories' => "categories",'default' => "default"),
+
+			'id' => $prefix . 'link',
+
+			'type' => 'sselect',
+
+			'std' => ''
+
+		),
+
+			array(
+
+			'name' => '栏目',
+
+			'desc' => '添加栏目 ',
+
+			'options' => $kaya_categories,
+
+			'id' => $prefix . 'categories',
+
+			'type' => 'select',
+
+			'std' => ''
+
+		),
+
+		array(
+
+			'name' => '页面',
+
+			'desc' => '选择想要链接的页面',
+
+			'options' => $kaya_pages,
+
+			'id' => $prefix . 'pages',
+
+			'type' => 'select',
+
+			'std' => ''
+
+		),
+
+		array(
+
+			'name' => '文章',
+
+			'desc' => '选择想要链接的文章',
+
+			'options' => $post_kaya,
+
+			'id' => $prefix . 'posts',
+
+			'type' => 'select',
+
+			'std' => ''
+
+		),
+
+		
+
+		array(
+
+			'name' => '自定义链接',
+
+			'desc' => '添加自定义链接: http://www.dianjin123.com',
+
+			'id' => $prefix . 'customlink',
+
+			'type' => 'text',
+
+			'std' => ''
+
+		),
+		array(
+			'name' => '页面图标',
+			'desc' => '上传标题图标, 如果不需要就留空.',
+			'id' => $prefix . 'kaya_page_title_icon',
+			'type' => 'upload',
+			'std' => ''
+		),
+		array(
+			'name' => '选择页面标题风格',
+			'desc' => '',
+			'id' => $prefix . 'subheader_titleoptions',
+			'type' => 'radio',
+			'options' => array("title" => "仅标题", "customtext" => "自定义文本", 'titlecustomtext'=>'标题 &自定义文本','disable'=>'不需要'),
+			'std' => 'title'
+		),
+		array(
+			'name' => '自定义页面描述',
+			'desc' => '输入页面标题描述',
+			'id' => $prefix . 'kaya_pagedesc',
+			'type' => 'textarea',
+			'std' => ''
+		),
+		
+	
+	)
+
+);
+
+
+
+add_action('admin_menu', 'slider_add_box');
+add_action('admin_init','customslidermeta_jsscript');
+
+function customslidermeta_jsscript(){
+wp_enqueue_script('customslider_script', get_template_directory_uri() .'/lib/admin/js/custommeta_jsscript.js',array('jquery'));
+}
+
+
+// Add meta box
+
+function slider_add_box() {
+
+	global $meta_box,$page_layout;
+
+	
+
+	add_meta_box($meta_box['id'], $meta_box['title'], 'slider_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
+	add_meta_box($page_layout['id'], $page_layout['title'], 'page_show_layout', 'slider', $page_layout['context'], $page_layout['priority']);
+}
+
+
+
+// Callback function to show fields in meta box
+
+function slider_show_box() {
+
+	global $meta_box, $post;
+
+	
+
+	// Use nonce for verification
+
+	echo '<input type="hidden" name="slider_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+
+	
+
+	echo '<div class="kayaoptions-formtable">';
+
+
+
+	foreach ($meta_box['fields'] as $field) {
+
+		// get current post meta data
+
+			$meta = get_post_meta($post->ID, $field['id'], true);
+	
+		if($meta=="") $meta=$field['std'];
+
+		
+
+					echo '<div class="metapanel" id="slider_'.$field['id'].'">',
+
+				'<div class="formfirstcolumn"><label for="', $field['id'], '">', $field['name'], '</label></div>',
+
+				'<div class="fieldsdiv">';
+		switch ($field['type']) {
+
+			case 'text':
+
+				echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:60%" />';
+
+				echo '<span class="desc">', $field['desc'],'</span>';
+
+				break;
+
+			case 'textarea':
+
+				echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="20" rows="2" style="width:500px">', $meta ? $meta : $field['std'], '</textarea>';
+
+					echo '<span class="desc">', $field['desc'],'</span>';
+
+				break;
+				case 'color':
+			?>
+<script type="text/javascript" language="javascript">
+
+
+
+		jQuery(document).ready(function(){
+
+				 jQuery('#<?php echo $field['id']; ?>_picker').children('div').css('backgroundColor', '<?php echo $meta; ?>');    
+
+				 jQuery('#<?php echo $field['id']; ?>_picker').ColorPicker({
+
+					color: '<?php echo $color; ?>',
+
+					onShow: function (colpkr) {
+
+						jQuery(colpkr).fadeIn(500);
+
+						return false;
+
+					},
+
+					onHide: function (colpkr) {
+
+						jQuery(colpkr).fadeOut(500);
+
+						return false;
+
+					},
+
+					onChange: function (hsb, hex, rgb) {
+
+						//jQuery(this).css('border','1px solid red');
+
+						jQuery('#<?php echo $field['id']; ?>_picker').children('div').css('backgroundColor', '#' + hex);
+
+						jQuery('#<?php echo $field['id']; ?>_picker').next('input').attr('value','#' + hex);
+
+						
+
+					}
+
+				  });
+
+		 
+
+		});
+
+		
+
+		</script>
+<?php
+			
+			echo '<div id="' , $field['id'] , '_picker" class="colorSelector"><div></div></div>';
+
+			echo  '<input class="kaya-color" name="', $field['id'] ,'" id="',$field['id'] ,'" type="text"  value="', $meta ? $meta : $field['std'],'" />';
+			echo '<span class="desc">', $field['desc'],'</span>';
+			break;
+
+				case 'upload': 
+				echo "<span><label for='upload_image'>";
+				echo'<input value="'.stripslashes(get_post_meta($post->ID, $field['id'], true)).'" type="text" name="'.$field['id'].'"  id="'.$field['id'].'" size="50%" />';
+				echo '<input class="upload_img_button"  id="'.$field['id'].'" type="button" value="上传图像" />';
+				echo '</label></span>';
+				echo '<span class="desc">', $field['desc'],'</span>';
+
+			break;
+
+			case 'sselect':
+
+				echo '<select name="', $field['id'], '" id="', $field['id'], '">';
+
+				foreach ($field['options'] as $key => $val) {
+
+					echo '<option value="', $val, '" ', $meta == $val ? ' selected="selected"' : '', '>', $val, '</option>';
+
+				}
+
+				echo '</select>';
+				echo '<span class="desc">', $field['desc'],'</span>';
+				break;
+				case 'select':
+
+				echo '<select name="', $field['id'], '" id="', $field['id'], '">';
+
+				foreach ($field['options'] as $key => $val) {
+
+					echo '<option value="', $key, '" ', $meta == $key ? ' selected="selected"' : '', '>', $val, '</option>';
+
+				}
+
+				echo '</select>';
+					echo '<span class="desc">', $field['desc'],'</span>';
+				break;
+				case 'radio':
+
+				foreach ($field['options'] as $key => $val) {
+
+				echo '<input  class="radio_button" type="radio" name="', $field['id'], '" value="', $key, '"', $meta == $key ? ' checked="checked"' : '', ' />', $val; 
+
+				}
+
+				break;
+
+			case 'checkbox':
+
+				echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
+
+				break;
+
+		}
+
+		echo 	'</div>',
+
+			'</div>';
+
+	}
+
+	
+
+	echo '</div>';
+
+}
+
+
+
+add_action('save_post', 'slider_save_data');
+
+add_action('admin_init','slider_script');
+
+function slider_script(){
+
+		
+
+		wp_enqueue_script('slider', get_template_directory_uri() .'/js/kaya-slider.js',array('jquery'));
+
+		
+
+	}
+
+// Save data from meta box
+
+function slider_save_data($post_id) {
+
+	global $meta_box;
+
+	
+
+	// verify nonce
+
+	if (!wp_verify_nonce(isset($_POST['slider_meta_box_nonce']), basename(__FILE__))) {
+
+		return $post_id;
+
+	}
+
+
+
+	// check autosave
+
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+
+		return $post_id;
+
+	}
+
+
+
+	// check permissions
+
+	if ('page' == $_POST['post_type']) {
+
+		if (!current_user_can('edit_page', $post_id)) {
+
+			return $post_id;
+
+		}
+
+	} elseif (!current_user_can('edit_post', $post_id)) {
+
+		return $post_id;
+
+	}
+
+	
+
+	foreach ($meta_box['fields'] as $field) {
+
+		$old = get_post_meta($post_id, $field['id'], true);
+
+		$new = $_POST[$field['id']];
+
+		
+
+		if ($new && $new != $old) {
+
+			update_post_meta($post_id, $field['id'], $new);
+
+		} elseif ('' == $new && $old) {
+
+			delete_post_meta($post_id, $field['id'], $old);
+
+		}
+
+	}
+
+}
+
+
+
+?>
