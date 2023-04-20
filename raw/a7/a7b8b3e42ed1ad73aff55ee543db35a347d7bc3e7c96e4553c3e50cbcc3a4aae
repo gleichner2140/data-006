@@ -1,0 +1,324 @@
+
+/* Sudo Slider for main home page slider 
+----------------------------------------------------------------------------------------------------*/
+#sudo_slider_wrapper, #landscape_single{
+	border-bottom:1px solid #ccc;
+	padding-bottom:0px;
+	background-image: url(../images/bg.png);
+	background-repeat: repeat;
+	background-position: center top;
+}
+#landscape_single{
+	text-align:center;
+	padding-bottom:50px;
+}
+#sudo_slider, #landscape_single {
+	padding-top:90px;
+ }
+ 
+ #sudo_slider h1 {
+	font-size:3em;
+	line-height:1.3em;
+ }
+
+ 
+#sudo_slider ul,
+ #sudo_slider li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+	display:block;
+ }
+ 
+ #slider_with_single_image ul{
+	 list-style:none;
+	 margin:0px;
+	 padding:0px;
+
+ }
+	
+#sudo_slider, #sudo_slider li {		
+	width:960px;
+	margin:0 auto;
+	overflow:hidden;	 
+	padding-bottom:30px;
+
+	}
+	
+#sudo_slider .readmore_button {
+	
+	}	
+#sudo_slider{		
+	overflow:hidden;
+	height:330px;
+	}	
+		
+
+.sudo_slider-text{
+	position:absolute;
+	top:0px;
+	width:200px;
+	margin-left:30px;
+	top:30px;
+	padding:20px;
+	background-image: url(../images/opacity-80-black.png);
+	background-repeat: repeat;
+	color:#ccc;
+}
+
+/* Numeric Navigation for Frontpage  slider
+----------------------------------------------------------------------------------------------------*/
+	
+#sudo_slider_wrapper span#controls {
+	width: auto;
+	margin:0 auto;
+	display:table;
+	text-align:center;
+	position:relative;
+	top:25px;
+	background-color:#eee;
+	border:1px solid #fff;
+	 -webkit-box-shadow: #666 0 0 5px;
+    -moz-box-shadow: #666 0 0 5px;
+    box-shadow: #666 0 0 5px;
+	
+	 -webkit-border-radius: 53px;
+    -moz-border-radius:53px;
+    border-radius: 53px;
+	font-size:12px!important;
+	font-family:Arial, Helvetica, sans-serif!important;
+	
+
+
+}	
+#sudo_slider_wrapper span#controls ol {
+	padding:0;
+	height:27px; 
+	margin:0 auto; 	
+	overflow:hidden;
+	float:right;
+	padding:10px;
+
+}
+#sudo_slider_wrapper span#controls ol li{
+
+	padding:0;
+	float:left;
+	list-style:none;
+	margin:0px;
+
+}
+#sudo_slider_wrapper span#controls ol li a{
+
+	width:27px;
+	height:27px;
+	display:block;
+	line-height:27px;
+	color:#333;
+	text-decoration:none;
+	background-image: url(../images/sudo_slider_nav_bullets.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin:0px 5px;
+	
+}
+#sudo_slider_wrapper span#controls ol li.current a{
+	background-image: url(../images/sudo_slider_nav_bullets_active.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	color:#eee;
+}
+#sudo_slider_wrapper span#controls ol li a:focus, .prevBtn a:focus, .nextBtn a:focus{outline:none;}
+
+
+/* Potrait Slider
+----------------------------------------------------------------------------------------------------*/
+#potrait_single{
+padding-top:20px;
+
+}
+
+#potrait_slider ul,
+ #potrait_slider li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+	display:block;
+ }
+	
+#potrait_slider, #potrait_slider li {		
+
+	margin:0 auto;
+	overflow:hidden;
+
+	}
+#potrait_slider {		
+	overflow:hidden;
+
+	}	
+
+#potrait_single_slider{
+	margin:0 auto;
+	overflow:hidden;
+	width:275px;
+}
+
+#potrait_slider_container a img, #potrait_single a img, #landscape_single a img{
+	padding:10px;
+	border:1px solid #dedede;
+	background-color:#fff;
+}
+#potrait_slider_container span#controls{
+	text-indent:-8000px;
+	position:relative;
+	display:block;
+
+}
+
+a.nextBtn{
+ position: absolute;
+    top:0px;
+    right: 0px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    background: transparent url(../images/next-horizontal.png) no-repeat 0 0;
+
+}
+a.nextBtn:hover{
+  background-position: left -30px;
+}
+a.prevBtn{
+  position: absolute;
+    top:5px;
+    right:25px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    background: transparent url(../images/prev-horizontal.png) no-repeat 0 0;
+	
+}
+a.nextBtn:hover{
+  background-position: left -30px;
+  
+}
+
+
+#potrait_single_slider ul, #potrait_single_slider li{
+	margin:0px;
+	padding:0px;
+}
+
+.landscapeimagesudo-slider-text{
+position: absolute;
+}
+
+
+/* Sudo Slider for Portfolio slider show
+----------------------------------------------------------------------------------------------------*/
+#slider_portfolio ul,
+#slider_portfolio li,
+#slider_portfolio_blog ul 
+ {
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+	display:block;
+ }
+ #slider_with_single_image ul,
+  #slider_portfolio_blog ul
+ {
+ list-style:none;
+ margin:0px;
+ padding:0px; 
+ }
+
+#slider_portfolio, #slider_portfolio li,
+  #slider_portfolio_blog,  #slider_portfolio_blog li
+{	
+	overflow:hidden;
+	}
+#slider_portfolio_single_image ul, #slider_portfolio_single_image li,
+#slider_portfolio_blog_single_image ul, #slider_portfolio_blog_single_image li
+{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+	display:block;
+}
+
+/* Numeric Navigation for Portfolio slider in single page.
+----------------------------------------------------------------------------------------------------*/
+
+.kayaportfolio  span#controls,
+.slider_portfolio_blog span#controls
+
+ {
+	position:relative;
+	display:block;
+	right:0px;
+
+}	
+.kayaportfolio span#controls ol,
+.slider_portfolio_blog span#controls ol
+ {
+	padding:0;
+	position:absolute;
+	top:30px;
+	height:28px; 
+	margin:0 auto;
+	right:0px;
+	z-index:6666;
+
+
+}
+.kayaportfolio span#controls ol li,
+.slider_portfolio_blog span#controls ol li
+{
+	margin:0 0px 0px; 
+	padding:0;
+	float:left;
+	list-style:none;
+	height:28px;
+	line-height:28px;
+}
+.kayaportfolio span#controls ol li a,
+.slider_portfolio_blog span#controls ol li a
+{
+	float:right;
+	width:27px;
+	height:27px;
+	display:block;
+	line-height:27px;
+	color:#333;
+	text-decoration:none;
+	background-image: url(../images/sudo_slider_nav_bullets.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin:0px 5px;
+	text-align:center;
+	
+}
+.kayaportfolio span#controls ol li.current a,
+.slider_portfolio_blog span#controls ol li.current a
+{
+	background-image: url(../images/sudo_slider_nav_bullets_active.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	color:#eee;
+}
+.kayaportfolio span#controls ol li a:focus, .prevBtn a:focus, .nextBtn a:focus,
+.slider_portfolio_blog span#controls ol li a:focus, .prevBtn a:focus, .nextBtn a:focus
+#taxportfolio_nav span#controls ol li a:focus, .prevBtn a:focus, .nextBtn a:focus
+{outline:none;}
+
+
+
+#videoslider{
+text-align:center;
+
+}
