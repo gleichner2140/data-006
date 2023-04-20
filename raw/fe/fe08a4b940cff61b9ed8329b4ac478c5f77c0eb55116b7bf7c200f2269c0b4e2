@@ -1,0 +1,259 @@
+<?php
+$themename="prominent";
+define('KAYA_LIB', TEMPLATEPATH . '/lib');
+define('KAYA_ADMIN', KAYA_LIB . '/admin');
+define('KAYA_FUNCTIONS', KAYA_LIB . '/functions');
+define('KAYA_WIDGETS', KAYA_LIB . '/functions/widgets');
+define('KAYA_META', KAYA_LIB . '/functions/custom_meta');
+define('KAYA_SHORTCODES', KAYA_LIB . '/functions/shortcodes');
+define('KAYA_INCLUDES', KAYA_LIB . '/includes');
+define('KAYA_THEME_JS', get_template_directory_uri() . '/js');
+define('KAYA_ADMIN_JS', get_template_directory_uri() . '/lib/admin/js');
+
+// theme optional panel
+
+/*-----------------------------------------------------------------------------------*/
+/* Options Framework Functions
+/*-----------------------------------------------------------------------------------*/
+
+/* Set the file path based on whether the Options Framework is in a parent theme or child theme */
+
+if ( STYLESHEETPATH == TEMPLATEPATH ) {
+	define('KAYA_FILEPATH', TEMPLATEPATH);
+	define('KAYA_DIRECTORY', get_template_directory_uri());
+
+} else {
+	define('KAYA_FILEPATH', STYLESHEETPATH);
+	define('KAYA_DIRECTORY', get_template_directory_uri());
+}
+
+/* These files build out the options interface.  Likely won't need to edit these. */
+require_once(KAYA_FUNCTIONS . '/custom_posts/kaya_slider.php');
+require_once(KAYA_FUNCTIONS . '/custom_posts/kaya_portfolio.php');
+require_once (KAYA_FILEPATH . '/lib/admin/admin-functions.php');		// Custom functions and plugins
+require_once (KAYA_FILEPATH . '/lib/admin/admin-interface.php');		// Admin Interfaces (options,framework, seo)
+
+/* These files build out the theme specific options and associated functions. */
+require_once (KAYA_FILEPATH . '/lib/admin/theme-options.php'); 		// Options panel settings and custom settings
+require_once (KAYA_FILEPATH . '/lib/admin/theme-functions.php'); 	// Theme actions based on options settings
+require_once(KAYA_INCLUDES . '/header_loads.php'); //header functions
+require_once(KAYA_INCLUDES . '/portfolio_walker.php'); // portfolio category  walker
+require_once(KAYA_FUNCTIONS . '/kaya_pagination.php');
+require_once(KAYA_FUNCTIONS . '/kaya_comments.php');
+require_once(KAYA_FUNCTIONS . '/common.php');
+
+//  custom meta box
+//require_once(KAYA_META . '/kaya_shortcode.php');
+require_once(KAYA_META . '/kaya_page_layout.php');
+require_once(KAYA_META . '/kaya_page_meta.php');
+require_once(KAYA_META . '/kaya_post_meta.php');
+require_once(KAYA_META . '/kaya_slider_meta.php');
+require_once(KAYA_META . '/kaya_portfolio_meta.php');
+require_once(KAYA_SHORTCODES . '/kaya_portfolio.php');
+require_once(KAYA_SHORTCODES . '/kaya_tabs_and_toggle.php');
+require_once(KAYA_SHORTCODES . '/kaya_general.php');
+require_once(KAYA_SHORTCODES . '/kaya_teaser_boxes.php');
+require_once(KAYA_SHORTCODES . '/kaya_services.php');
+require_once(KAYA_SHORTCODES . '/kaya_testimonial.php');
+require_once(KAYA_SHORTCODES . '/kaya_tables.php');
+require_once(KAYA_SHORTCODES . '/kaya_socialicons.php');
+require_once(KAYA_SHORTCODES . '/kaya_columns.php');
+require_once(KAYA_SHORTCODES . '/kaya_portfolio.php');
+require_once(KAYA_SHORTCODES . '/kaya_galleria.php');
+require_once(KAYA_SHORTCODES . '/kaya_teaser.php');
+require_once(KAYA_SHORTCODES . '/kaya_blog.php');
+require_once(KAYA_SHORTCODES . '/kaya_posts.php');
+require_once(KAYA_SHORTCODES . '/kaya_tax_portfolio.php');
+
+
+
+require_once(KAYA_WIDGETS . '/widgets.php');
+require_once(KAYA_WIDGETS . '/mini_contact_widget.php');
+require_once(KAYA_WIDGETS . '/kaya_popularpost.php');
+require_once(KAYA_WIDGETS . '/kaya_recentpost.php');
+require_once(KAYA_WIDGETS . '/kaya_flickr.php');
+require_once(KAYA_WIDGETS . '/kaya_twitter.php');
+require_once(KAYA_WIDGETS . '/kaya_contactinfo.php');
+require_once(KAYA_WIDGETS . '/kaya_tax_recentpost.php');
+require_once(KAYA_WIDGETS . '/kaya_tax_portfolio_gallery.php');
+
+// tinymce editor 
+require_once(KAYA_FUNCTIONS.'/tinymce/tinymce.php');
+add_filter('widget_text','do_shortcode');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rsd_link');
+
+
+// Make theme available for translation
+// Translations can be filed in the /languages/ directory
+	load_theme_textdomain( 'prominent', TEMPLATEPATH . '/languages' );
+
+	$locale = get_locale();
+	$locale_file = TEMPLATEPATH . "/languages/$locale.php";
+	if ( is_readable( $locale_file ) )
+		require_once( $locale_file );
+		
+
+//remove_action('wp_head', 'wp_generator');
+
+// This theme allows users to set a custom background
+	add_custom_background();
+
+// This theme menu supports
+	add_theme_support( 'nav-menus' );
+	add_editor_style();
+	if ( ! isset( $content_width ) )
+	$content_width ='';
+	add_custom_image_header( '', 'kaya_admin_custom_skin' );
+
+// This theme uses wp_nav_menu() in 2 location.
+	register_nav_menus( array(
+		'primary' => __( 'Primary Navigation', 'prominent' ),
+		'secondary' => __( 'Secondary Navigation' , 'prominent'),
+
+		) );
+
+// This theme uses post thumbnails
+	add_theme_support( 'post-thumbnails' );
+
+// walker function for menu dscription
+class description_walker extends Walker_Nav_Menu
+{
+      function start_el(&$output, $item, $depth, $args)
+      {
+           global $wp_query;
+           $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+           $class_names = $value = '';
+           $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+           $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+           $class_names = ' class="'. esc_attr( $class_names ) . '"';
+           $output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+           $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+           $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+           $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+           $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+           $prepend = '<strong>';
+           $append = '</strong>';
+           $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
+           if($depth != 0)
+
+           {
+
+                     $description = $append = $prepend = "";
+
+           }
+
+
+            $item_output = $args->before;
+            $item_output .= '<a'. $attributes .'>';
+            $item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+            $item_output .= $description.$args->link_after;
+            $item_output .= '</a>';
+            $item_output .= $args->after;
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            }
+
+}
+
+// limit the post content ======================================================================================
+function content($num) {
+$theContent = get_the_content();
+$output = preg_replace('/<img[^>]+./','', $theContent);
+$output = preg_replace( '/<blockquote>.*<\/blockquote>/', '', $output );
+$output = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $output );
+$limit = $num+1;
+$content = explode(' ', $output, $limit);
+array_pop($content);
+$content = implode(" ",$content)."...";
+return $content;
+}
+
+// Add default posts and comments RSS feed links to head
+	add_theme_support( 'automatic-feed-links' );
+function has_portfolio_category( $portfolio_category, $_post = null ) {
+	if ( empty( $person ) )
+		return false;
+	if ( $_post )
+		$_post = get_post( $_post );
+	else
+
+		$_post =& $GLOBALS['post'];
+
+	if ( !$_post )
+		return false;
+	$r = is_object_in_term( $_post->ID, 'portfolio_category', $portfolio_category );
+
+		if ( is_wp_error( $r ) )
+		return false;
+	return $r;
+}
+/*
+
+ * Thank to Bob Sherron.
+ * http://stackoverflow.com/questions/1155565/query-multiple-custom-taxonomy-terms-in-wordpress-2-8/2060777#2060777
+
+ */
+
+function multi_tax_terms($where) {
+    global $wp_query;
+    if (isset($wp_query->query_vars['term']) && (strpos($wp_query->query_vars['term'], ',') !== false && strpos($where, "AND 0") !== false) ) {
+        // it's failing because taxonomies can't handle multiple terms
+        //first, get the terms
+
+        $term_arr = explode(",", $wp_query->query_vars['term']);
+        foreach($term_arr as $term_item) {
+            $terms[] = get_terms($wp_query->query_vars['taxonomy'], array('slug' => $term_item));
+        }
+
+       //next, get the id of posts with that term in that tax
+        foreach ( $terms as $term ) {
+            $term_ids[] = $term[0]->term_id;
+
+        }
+        $post_ids = get_objects_in_term($term_ids, $wp_query->query_vars['taxonomy']);
+
+        if ( !is_wp_error($post_ids) && count($post_ids) ) {
+
+            // build the new query
+
+            $new_where = " AND wp_posts.ID IN (" . implode(', ', $post_ids) . ") ";
+
+            // re-add any other query vars via concatenation on the $new_where string below here
+
+           // now, sub out the bad where with the good
+
+            $where = str_replace("AND 0", $new_where, $where);
+
+        } else {
+
+            // give up
+
+        }
+
+    }
+    return $where;
+}
+
+add_filter("posts_where", "multi_tax_terms");	
+
+function kaya_remove_recent_comments_style() {
+	global $wp_widget_factory;
+	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+}
+add_action( 'widgets_init', 'kaya_remove_recent_comments_style' );
+?>
+<?php
+function homepage_column( $id = '', $class = '', $homepagewidget = '' ) {
+    return "<div id='{$id}' class='{$class}'>".homepage_dynamic_sidebar( $homepagewidget )."</div>";
+}
+
+function homepage_dynamic_sidebar($index = '') {
+	$homesidebar_contents = "";
+	ob_start();
+        if ( function_exists('dynamic_sidebar') && dynamic_sidebar( $index ) ){
+	$homesidebar_contents = ob_get_clean();
+	return $homesidebar_contents;
+	}
+}
+
+?>
