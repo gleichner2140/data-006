@@ -1,0 +1,17 @@
+<?php
+
+/*** FANCY TABLE
+------------------------------*/
+function kaya_fancy_table( $atts, $content = null ) {
+	extract(shortcode_atts(array(
+		'style'      => '',
+		
+    ), $atts));
+    $out='<div class='.$style.'>';
+	$out.= str_replace('<table>', '<table>', do_shortcode($content));
+	   $out.='</div>';
+	return $out;
+}
+add_shortcode('kaya_table', 'kaya_fancy_table');
+
+?>
